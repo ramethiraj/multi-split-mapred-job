@@ -18,6 +18,7 @@ import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
+import org.apache.hadoop.hbase.mapreduce.TableMapReduceUtil; 
 
 public class AnonymizationPipelineDriver extends Configured implements Tool {
     
