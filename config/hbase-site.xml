@@ -1,0 +1,10 @@
+<configuration>
+    <property>
+        <name>hbase.client.retries.number</name>
+        <value>3</value>
+    </property>
+    <property>
+        <name>hbase.zookeeper.quorum</name>
+        <value>mapr-node1,mapr-node2,mapr-node3</value> 
+    </property>
+</configuration>
