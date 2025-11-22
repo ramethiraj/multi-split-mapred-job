@@ -3,7 +3,7 @@ package com.mapr.health.job2;
 import com.mapr.health.util.SchemaUtility;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable;
-import org.apache.hadoop.hbase.mapreduce.TableReducer;
+import org.apache.hadoop.hbase.mapreduce.TableReducer; 
 import org.apache.hadoop.io.Text;
 
 import java.io.IOException;
@@ -17,7 +17,7 @@ public class ArchivalTagReducer
     extends TableReducer<Text, Text, ImmutableBytesWritable> {
 
     @Override
-    public void reduce(Text key, Iterable<Text> values, Context context)
+    public void reduce(Text key, Iterable<Text> values, TableReducer<Text, Text, ImmutableBytesWritable>.Context context) 
             throws IOException, InterruptedException {
         
         // The key is the final RowKey: AnonymizedID_VisitDate
