@@ -3,10 +3,8 @@ package com.mapr.health.job1;
 import com.mapr.health.util.SchemaUtility;
 import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable;
-import org.apache.hadoop.hbase.mapreduce.TableMapper;
+import org.apache.hadoop.hbase.mapreduce.TableMapper; 
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapreduce.Mapper;
-
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -26,9 +24,10 @@ public class PHIAnonymizationMapper
     private final Text outputValue = new Text();
 
     @Override
-    public void map(ImmutableBytesWritable rowKey, Result result, Context context)
+    public void map(ImmutableBytesWritable rowKey, Result result, TableMapper<Text, Text>.Context context) 
             throws IOException, InterruptedException {
 
+        
         // 1. Extract Raw PHI and Metadata
         byte[] patientNameBytes = result.getValue(SchemaUtility.RAW_PHI_CF, SchemaUtility.PATIENT_NAME_COL);
         byte[] visitDateBytes = result.getValue(SchemaUtility.METADATA_CF, SchemaUtility.VISIT_DATE_COL);
@@ -54,7 +53,6 @@ public class PHIAnonymizationMapper
         // 3. Prepare output for temporary MapR-FS location
         // Key: Hashed Patient ID
         // Value: All non-PHI/Anonymized data that needs to be retained (e.g., VISIT_DATE)
-        
         outputKey.set(anonymizedId);
         outputValue.set(visitDate);
         
