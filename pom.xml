@@ -16,12 +16,20 @@
         <maven.compiler.target>11</maven.compiler.target>
         <hadoop.version>3.3.4</hadoop.version>
         <hbase.version>2.4.15</hbase.version>
-        <mapr.version>6.1.0-mapr</mapr.version> </properties>
+        <mapr.version>6.1.0-mapr</mapr.version> 
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.hbase</groupId>
             <artifactId>hbase-client</artifactId>
+            <version>${hbase.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-mapreduce</artifactId>
             <version>${hbase.version}</version>
             <scope>provided</scope>
         </dependency>
